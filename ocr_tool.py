@@ -17,7 +17,8 @@ def extract_text_from_image(image_path):
 
 def extract_items_and_prices(text):
     # Example regular expression to capture items and prices
-    pattern = r'([A-Za-z\s]+)\s+(\d+\.\d{2})'
+    pattern = r'([A-Za-z\s]+)\s+([\d,]+\.\d{2})'
+
     matches = re.findall(pattern, text)
     
     # Print extracted items and prices
