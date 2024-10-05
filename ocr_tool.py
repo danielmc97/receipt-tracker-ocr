@@ -7,13 +7,20 @@ import re
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\danie\Desktop\Github_Tools\OCR_windows\Tesseract-OCR\tesseract.exe'
 
 def extract_text_from_image(image_path):
-    # Load the image
-    img = Image.open(image_path)
-    
-    # Perform OCR
-    text = pytesseract.image_to_string(img)
-    
-    return text
+    try:
+        # Load the image
+        img = Image.open(image_path)
+        
+        # Perform OCR
+        text = pytesseract.image_to_string(img)
+        
+        return text
+    except FileNotFoundError:
+        print(f"Error: The file '{image_path}' was not found.")
+        return ""
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return ""
 
 def extract_items_and_prices(text):
     # Example regular expression to capture items and prices
